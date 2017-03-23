@@ -24,10 +24,12 @@ public class Autonomous_GearRight extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	addSequential(new TimedDrive(1.375, false, -.75));
-    	addSequential(new TimedDrive(.2, false, 0));
-    	addSequential(new TimedDrive(.725, true, -.7));
-    	addSequential(new TimedDrive(.2, false, 0));
-    	addSequential(new TimedDrive(1, false, -.65));
+    	
+    	addSequential(new DistanceDrive_cmd(1.82, -.615), 6); //hopefully goes forward
+    	addSequential(new AutoRotate(1, -40));                 //hopefully turns
+    	addSequential(new DistanceDrive_cmd(0.72, -.5), 6);   //hopefully goes forward again
+    	addSequential(new Gear_autoCmd());                    //hopefully puts gear on peg    
+    	
+    
     }
 }
